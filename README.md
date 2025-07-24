@@ -143,7 +143,7 @@ rfm_df.write.save_as_table("rfm_data", mode="overwrite")
 print(rfm_df.limit(10).to_pandas())
  ```
 
--- K- Means 
+-K- Means 
 
 ``` python
 from sklearn.cluster import KMeans
@@ -193,7 +193,31 @@ print(f"Silhouette Score: {score}")
 session.write_pandas(rfm_pandas, "customer_segments", auto_create_table=True, overwrite=True)
 print(rfm_pandas.head(10))
 ```
- 
+ ### Now come to Snowflake and type following SQL query  to check clusters and Avg Recency , Avg Frequency , Avg Monetary
+ ``` sql
+SELECT "cluster", 
+       ROUND(AVG("RECENCY"), 0) AS AvgRecency, 
+       ROUND(AVG("FREQUENCY"), 0) AS AvgFrequency, 
+       ROUND(AVG("MONETARY"), 2) AS AvgMonetary
+FROM "customer_segments"
+GROUP BY "cluster"
+ORDER BY "cluster";
+```
+
+
+-Run the Following Query to see the tables which we are going to use in our Power BI for Analysis and Charts 
+
+``` sql
+USE DATABASE ecommerce_db;
+USE SCHEMA analytics;
+SHOW TABLES;
+ ```
+ - We can see now CUSTOMER_DATA, RFM_DATA, customer_segments ready for analytics.
+
+## COnnect To Power BI
+
+
+
 
 
   
