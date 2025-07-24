@@ -91,7 +91,7 @@ from snowflake.snowpark import Session
 connection_parameters = {
     "account": "UE17324.eu-west-2.aws",  # e.g., xy12345.us-east-1
     "user": "Dhanush1054",
-    "password": "Dhanush@1054851",
+    "password": "Dhanush@1054",
     "role": "SYSADMIN",
     "warehouse": "COMPUTE_WH",
     "database": "ecommerce_db",
