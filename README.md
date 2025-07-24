@@ -66,9 +66,51 @@ This project, titled **Customer Segmentation with Snowflake and Data Science**, 
   FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"' ON_ERROR = 'CONTINUE')
   VALIDATION_MODE = RETURN_ERRORS;
   ```
-  -### Now we are going to connect our database in jupyter notebook to Run RFM analysis & K- means etc.
-- ** First We should install all libriries as following
+## Now we are going to connect our database in jupyter notebook to Run RFM analysis & K- means etc.
+ ** First We should install all libriries as following
   ``` python
   pip install snowflake-snowpark-python pandas scikit-learn scipy numpy matplotlib
+  pip install snowflake-connector-python snowflake-sqlalchemy sqlalchemy
+  pip install --upgrade snowflake-connector-python snowflake-snowpark-python
+
   ```
+ ``` pthon
+ import snowflake.snowpark
+import pandas as pd
+import sklearn
+import scipy
+import numpy as np
+import matplotlib
+print("Libraries good!")
+ ```
+ ** Now we have to Connect our Snowflake Db
+ ``` python
+
+from snowflake.snowpark import Session
+
+connection_parameters = {
+    "account": "UE17324.eu-west-2.aws",  # e.g., xy12345.us-east-1
+    "user": "Dhanush1054",
+    "password": "Dhanush@1054851",
+    "role": "SYSADMIN",
+    "warehouse": "COMPUTE_WH",
+    "database": "ecommerce_db",
+    "schema": "analytics"
+}
+session = Session.builder.configs(connection_parameters).create()
+print("Connected to Snowflake!")
+
+```
+** Now Load data from customer_data table
+``` python
+from snowflake.snowpark.functions import col, datediff, count, sum, max, current_date
+
+# Load data from customer_data table
+df = session.table("customer_data")
+df = df.with_column("TotalSpend", col("Quantity") * col("UnitPrice"))
+```
+
+
+
+
   
