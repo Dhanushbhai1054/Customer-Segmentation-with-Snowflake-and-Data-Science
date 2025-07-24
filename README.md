@@ -30,8 +30,8 @@ This project, titled **Customer Segmentation with Snowflake and Data Science**, 
 ### 1. Data Setup in Snowflake
 - **Rationale**: Established a scalable environment for data storage and processing.
 - **Steps**:
-  - Created database and schema:
-    ```sql
+   Created database and schema:
+   ```sql
     USE ROLE SYSADMIN;
     CREATE DATABASE ecommerce_db;
     USE DATABASE ecommerce_db;
@@ -39,7 +39,7 @@ This project, titled **Customer Segmentation with Snowflake and Data Science**, 
     CREATE STAGE ecommerce_stage;
 - Uploaded data.csv to ecommerce_stage and loaded into customer_data table:
 
- ``` sql
+``` sql
    CREATE TABLE customer_data (
     InvoiceNo STRING,
     StockCode STRING,
