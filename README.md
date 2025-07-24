@@ -37,9 +37,9 @@ This project, titled **Customer Segmentation with Snowflake and Data Science**, 
     USE DATABASE ecommerce_db;
     CREATE SCHEMA analytics;
     CREATE STAGE ecommerce_stage;
--Uploaded data.csv to ecommerce_stage and loaded into customer_data table:
+- Uploaded data.csv to ecommerce_stage and loaded into customer_data table:
 
-- ``` sql
+ ``` sql
    CREATE TABLE customer_data (
     InvoiceNo STRING,
     StockCode STRING,
@@ -48,9 +48,7 @@ This project, titled **Customer Segmentation with Snowflake and Data Science**, 
     InvoiceDate TIMESTAMP,
     UnitPrice FLOAT,
     CustomerID STRING,
-    Country STRING
-);
-``` sql
+    Country STRING);
 COPY INTO customer_data
 FROM @ecommerce_stage/data.csv
 FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"' ON_ERROR = 'CONTINUE')
