@@ -49,7 +49,20 @@ This project, titled **Customer Segmentation with Snowflake and Data Science**, 
     UnitPrice FLOAT,
     CustomerID STRING,
     Country STRING);
-COPY INTO customer_data
-FROM @ecommerce_stage/data.csv
-FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"' ON_ERROR = 'CONTINUE')
-VALIDATION_MODE = RETURN_ERRORS;
+```
+- This Dataset contains different timestamp format for column InvoiceDate so follow this code to change timestamp format
+  ``` sql
+  CREATE OR REPLACE FILE FORMAT my_csv_format
+  TYPE = 'CSV'
+  FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+  SKIP_HEADER = 1
+  TIMESTAMP_FORMAT = 'MM/DD/YYYY HH24:MI';
+  ```
+  
+- Now copy the dataset into customer_data Table
+  ``` sql
+  COPY INTO customer_data
+  FROM @ecommerce_stage/data.csv
+  FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"' ON_ERROR = 'CONTINUE')
+  VALIDATION_MODE = RETURN_ERRORS;
+  ```
