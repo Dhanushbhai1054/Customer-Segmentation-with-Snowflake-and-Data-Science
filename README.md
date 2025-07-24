@@ -66,3 +66,9 @@ This project, titled **Customer Segmentation with Snowflake and Data Science**, 
   FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '"' ON_ERROR = 'CONTINUE')
   VALIDATION_MODE = RETURN_ERRORS;
   ```
+  -### Now we are going to connect our database in jupyter notebook to Run RFM analysis & K- means etc.
+- ** First We should install all libriries as following
+  ``` python
+  pip install snowflake-snowpark-python pandas scikit-learn scipy numpy matplotlib
+  ```
+  
