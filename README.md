@@ -110,7 +110,90 @@ df = session.table("customer_data")
 df = df.with_column("TotalSpend", col("Quantity") * col("UnitPrice"))
 ```
 
+### We have a challenge after this point , for the best Recency we should not use current time and we should use the max date in the data set . The data set is old and for this follow this code below
 
+- First Check Date Range
+``` python
+# Check date range
+df = session.table("customer_data")
+min_date = df.selectExpr("MIN(InvoiceDate) AS min_date").collect()[0]["MIN_DATE"]
+max_date = df.selectExpr("MAX(InvoiceDate) AS max_date").collect()[0]["MAX_DATE"]
+print(f"Earliest date: {min_date}, Latest date: {max_date}")
+```
+- Below we are using Latest date as max_date and we should clean the data is there is no null in customer id 
+``` python
+from snowflake.snowpark.functions import col, datediff, count, sum, lit, max as sf_max
+
+max_date = "2011-12-09"
+
+df = session.table("customer_data")
+df = df.filter(col("CustomerID").is_not_null())  # Remove null CustomerIDs
+df = df.with_column("TotalSpend", col("Quantity") * col("UnitPrice"))
+```
+- Calculate RFM
+ ``` python
+rfm_df = df.group_by("CustomerID").agg(
+    datediff("day", sf_max(col("InvoiceDate")), lit(max_date)).alias("Recency"),
+    count("InvoiceNo").alias("Frequency"),
+    sum("TotalSpend").alias("Monetary")
+)
+
+rfm_df.write.save_as_table("rfm_data", mode="overwrite")
+
+print(rfm_df.limit(10).to_pandas())
+ ```
+
+-- K- Means 
+
+``` python
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score
+
+# Reload and clean RFM data
+rfm_df = session.table("rfm_data")
+rfm_df = rfm_df.filter(col("CustomerID").is_not_null())
+rfm_df = rfm_df.filter((col("Frequency") < 10000) & (col("Monetary") < 100000))
+rfm_pandas = rfm_df.to_pandas()
+
+# K-Means with corrected data
+X = rfm_pandas[["RECENCY", "FREQUENCY", "MONETARY"]]
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+kmeans = KMeans(n_clusters=4, random_state=42)
+rfm_pandas["cluster"] = kmeans.fit_predict(X_scaled)
+```
+
+``` pyhton
+# Draw a picture to pick the best number of groups
+plt.plot(range(2, 9), inertias, marker="o")
+plt.xlabel("Number of Groups")
+plt.ylabel("Inertia")
+plt.title("Elbow Method")
+plt.show()
+```
+``` python
+# Choose 4 groups (or adjust based on the picture)
+kmeans = KMeans(n_clusters=4, random_state=42)
+rfm_pandas["Cluster"] = kmeans.fit_predict(X_scaled)
+```
+ ** Check Quality by using Silhouette Score
+
+ ``` python
+# Check quality
+score = silhouette_score(X_scaled, rfm_pandas["cluster"])
+print(f"Silhouette Score: {score}")
+```
+- Make sure the score should always >0.5 to be good Quality
+
+- Now save to Snowflake
+``` python
+
+# Save to Snowflake (overwrite old customer_segments)
+session.write_pandas(rfm_pandas, "customer_segments", auto_create_table=True, overwrite=True)
+print(rfm_pandas.head(10))
+```
+ 
 
 
   
