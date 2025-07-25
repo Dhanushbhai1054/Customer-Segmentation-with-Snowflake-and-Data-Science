@@ -214,7 +214,25 @@ SHOW TABLES;
  ```
  - We can see now CUSTOMER_DATA, RFM_DATA, customer_segments ready for analytics.
 
-## COnnect To Power BI
+## Connect to Power BI  
+
+- Use snowflake DB to connect Power BI and load the tables of Customer_data, customer_segments, RFM data tables and chack the data types and load .
+  ## 📊 E-Commerce Customer Segmentation Dashboard
+
+This **Power BI dashboard** provides an insightful view of **customer segmentation** for an e-commerce business.  
+It uses **RFM (Recency, Frequency, Monetary)** analysis to group customers into meaningful clusters, helping the business identify high-value segments and target them effectively.
+
+![E-Commerce Customer Segmentation Dashboard](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-25%20170927.png)
+
+### 📌 Tools Used
+- **Power BI** for interactive data visualization.
+- **RFM Analysis** for customer segmentation.
+- ** Snowflake Database
+
+---
+
+**Explore the dashboard to gain actionable insights!**
+
 
 
 
