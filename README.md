@@ -217,21 +217,164 @@ SHOW TABLES;
 ## Connect to Power BI  
 
 - Use snowflake DB to connect Power BI and load the tables of Customer_data, customer_segments, RFM data tables and chack the data types and load .
-  ## 📊 E-Commerce Customer Segmentation Dashboard
+  ##  E-Commerce Customer Segmentation Dashboard
 
 This **Power BI dashboard** provides an insightful view of **customer segmentation** for an e-commerce business.  
 It uses **RFM (Recency, Frequency, Monetary)** analysis to group customers into meaningful clusters, helping the business identify high-value segments and target them effectively.
 
 ![E-Commerce Customer Segmentation Dashboard](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-25%20170927.png)
 
-### 📌 Tools Used
-- **Power BI** for interactive data visualization.
-- **RFM Analysis** for customer segmentation.
-- ** Snowflake Database
+#  Customer Segmentation Dashboard using Power BI
+
+## Power BI Dashboard Reporting
+
+###  KPIs Included
+- **Total Customers**
+- **Total Revenue**
+- **Average Frequency**
+- **Average Recency**
+- **Average Monetary**
 
 ---
 
-**Explore the dashboard to gain actionable insights!**
+### Slicer with Clusters
+
+#### Reporting
+The slicer offers a dropdown to filter data by clusters (0, 1, 2, 3), providing a user-friendly way to focus on specific segments. It enhances analysis by isolating each group’s performance.
+
+####  View
+A clean dropdown interface allowing quick switches between clusters for detailed exploration.
+
+---
+
+### Distribution of Customers by Cluster (Pie Chart)
+
+####  Reporting
+This pie chart shows the proportion of customers across the four clusters. Based on SQL averages:
+- **Cluster 0** likely dominates due to moderate activity.
+- **Cluster 3**, despite being small, contributes significantly due to high frequency.
+
+####  View
+A colorful pie chart with segments of varying sizes, highlighting the largest group (likely Cluster 0) and the smallest (likely Cluster 3).
+
+---
+
+###  Average RFM by Cluster (Clustered Bar Chart)
+
+#### Reporting
+The bar chart compares average Recency, Frequency, and Monetary values:
+- **Cluster 3** stands out with:
+  - Recency: 2 days  
+  - Frequency: 5,918 purchases  
+  - Monetary: $42,177.93  
+- **Cluster 1** lags with:
+  - Recency: 246 days  
+  - Monetary: $451.36
+
+####  View
+Clustered bars clearly show Cluster 3 towering in Frequency and Monetary, while Cluster 1 ranks lowest across all metrics.
+
+---
+
+###  Scatter Plot of Frequency vs. Monetary by Cluster
+
+#### Reporting
+This scatter plot maps Frequency against Monetary, color-coded by cluster.
+- **Cluster 3** appears in the upper-right corner with ~5,918 purchases and ~$42,177.93 spend.
+- **Cluster 1** appears in the lower-left, indicating lower value customers.
+
+#### View
+A scatter plot with distinct colored clusters. Cluster 3 is a standout point, with other clusters spread across lower values.
+
+---
+
+###  Maps of Country by Cluster
+
+#### Reporting
+The map displays customer distribution by country for each cluster. Given the UK focus of the dataset, most clusters likely concentrate in the UK. Cluster 3 may show a more specific regional pattern due to its smaller size.
+
+####  View
+A map with shaded regions, predominantly focused on the UK, varying in intensity by cluster.
+
+---
+
+###  Total Products by Cluster
+
+####  Reporting
+This chart or table lists unique products per cluster.
+- **Cluster 3**, due to high activity, likely leads in product diversity.
+- **Cluster 1** likely shows fewer unique products, indicating lower engagement.
+
+####  View
+A table or bar chart, with Cluster 3 potentially at the top for product count.
+
+---
+
+##  Findings and Business Impact
+
+###  Cluster Insights
+
+- **Cluster 0**
+  - Recency: 40 days  
+  - Frequency: 102 purchases  
+  - Monetary: $1,670.07  
+  - Represents a large, steady, engaged customer base.
+
+- **Cluster 1**
+  - Recency: 246 days  
+  - Frequency: 27 purchases  
+  - Monetary: $451.36  
+  - Low engagement; needs reactivation.
+
+- **Cluster 2**
+  - Recency: 6 days  
+  - Frequency: 642 purchases  
+  - Monetary: $37,427.89  
+  - Highly loyal and valuable segment.
+
+- **Cluster 3**
+  - Recency: 2 days  
+  - Frequency: 5,918 purchases  
+  - Monetary: $42,177.93  
+  - Small but high-value group (VIPs or bulk buyers).
+
+---
+
+## Business Help
+
+These insights allow the e-commerce platform to:
+
+- Prioritize **Cluster 3** for exclusive offers to maintain their $42,177.93 average.
+-  Enhance **Cluster 2**’s loyalty with tailored incentives.
+-  Re-engage **Cluster 1** with targeted promotions.
+-  Leverage **Cluster 0**’s size for scalable marketing campaigns.
+
+---
+
+## Suggestions for the Business
+
+### Marketing Strategies
+- Offer a premium membership for **Cluster 3** with personalized deals.
+- Introduce loyalty rewards for **Cluster 2** to sustain their high activity.
+- Send reactivation emails with discounts to **Cluster 1**.
+- Launch seasonal promotions for **Cluster 0** to boost their $1,670.07 average.
+
+### Inventory Management
+- Stock a wide range of products for **Cluster 3** based on their diverse purchases.
+- Focus on UK-popular items as indicated by the map.
+
+### Geographic Focus
+- Concentrate marketing efforts in the **UK**, with plans to explore other regions.
+
+### Technology Use
+- Use Power BI dashboards for ongoing segment monitoring and performance tracking.
+
+
+## Conclusion
+
+This project segmented customers into **four distinct groups**, with **Cluster 3** emerging as the highest-value segment, averaging **$42,177.93 in spend**.  
+By leveraging **Snowflake, Python, and Power BI**, we built a powerful dashboard that equips the e-commerce business with data-driven insights to improve engagement, optimize campaigns, and drive revenue.
+
 
 
 
