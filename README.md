@@ -249,6 +249,8 @@ A clean dropdown interface allowing quick switches between clusters for detailed
 
 ### Distribution of Customers by Cluster (Pie Chart)
 
+![Pie Chart](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113308.png)
+
 ####  Reporting
 This pie chart shows the proportion of customers across the four clusters. Based on SQL averages:
 - **Cluster 0** likely dominates due to moderate activity.
@@ -260,6 +262,8 @@ A colorful pie chart with segments of varying sizes, highlighting the largest gr
 ---
 
 ###  Average RFM by Cluster (Clustered Bar Chart)
+
+![Clustered Bar Chart](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113502.png)
 
 #### Reporting
 The bar chart compares average Recency, Frequency, and Monetary values:
@@ -290,11 +294,13 @@ A scatter plot with distinct colored clusters. Cluster 3 is a standout point, wi
 
 ###  Maps of Country by Cluster
 
+![Scatter Plot](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113820.png)
 #### Reporting
 The map displays customer distribution by country for each cluster. Given the UK focus of the dataset, most clusters likely concentrate in the UK. Cluster 3 may show a more specific regional pattern due to its smaller size.
 
 ####  View
 A map with shaded regions, predominantly focused on the UK, varying in intensity by cluster.
+![Map](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113950.png)
 
 ---
 
@@ -307,7 +313,7 @@ This chart or table lists unique products per cluster.
 
 ####  View
 A table or bar chart, with Cluster 3 potentially at the top for product count.
-
+![Product Table](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20114110.png)
 ---
 
 ##  Findings and Business Impact
