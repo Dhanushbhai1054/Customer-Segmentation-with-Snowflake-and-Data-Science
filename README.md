@@ -185,6 +185,41 @@ score = silhouette_score(X_scaled, rfm_pandas["cluster"])
 print(f"Silhouette Score: {score}")
 ```
 - Make sure the score should always >0.5 to be good Quality
+###  Why We Chose 4 Clusters (Elbow Method & Silhouette Score)
+
+#### Elbow Method – Selecting the Optimal Number of Clusters
+We used the **Elbow Method** graph to find the optimal number of clusters.
+
+In the graph, the “elbow point” appears at **k = 4**, where the drop in inertia (error) starts to slow down.
+
+![Elbow Method](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/elbowmethod.png?raw=true)
+
+**This means:**
+- Using **4 clusters** gives a good balance between **model accuracy** and **simplicity**.
+- Choosing more than 4 clusters adds complexity without significant improvement in performance.
+
+---
+
+#### What is Silhouette Score?
+The **Silhouette Score** measures how well each point fits within its cluster — and how clearly it’s separated from other clusters.
+
+**How it works:**
+- Score ranges from **-1 to +1**:
+  - `+1` → Perfect clustering (well-separated, tight clusters)
+  - `0` → Overlapping clusters
+  - `-1` → Wrong clustering (points assigned to the wrong cluster)
+
+**In our case, the Silhouette Score is: `0.569`**
+
+**This score means:**
+- The 4 clusters are **well-formed** and **distinct**.
+- The segmentation is **reliable** and **meaningful** for analysis or marketing actions.
+
+---
+
+We used the **Elbow Method** to select 4 clusters, avoiding unnecessary complexity,  
+and validated the clustering quality with a **Silhouette Score of 0.569**,  
+indicating **well-separated and insightful customer segments**.
 
 - Now save to Snowflake
 ``` python
@@ -222,7 +257,7 @@ SHOW TABLES;
 This **Power BI dashboard** provides an insightful view of **customer segmentation** for an e-commerce business.  
 It uses **RFM (Recency, Frequency, Monetary)** analysis to group customers into meaningful clusters, helping the business identify high-value segments and target them effectively.
 
-![E-Commerce Customer Segmentation Dashboard](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-25%20170927.png)
+![E-Commerce Customer Segmentation Dashboard](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Power%20Bi%20Dashboard.png)
 
 #  Customer Segmentation Dashboard using Power BI
 
@@ -249,7 +284,7 @@ A clean dropdown interface allowing quick switches between clusters for detailed
 
 ### Distribution of Customers by Cluster (Pie Chart)
 
-![Pie Chart](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113308.png)
+![Pie Chart](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/pie%20chart.png)
 
 ####  Reporting
 This pie chart shows the proportion of customers across the four clusters. Based on SQL averages:
@@ -263,7 +298,7 @@ A colorful pie chart with segments of varying sizes, highlighting the largest gr
 
 ###  Average RFM by Cluster (Clustered Bar Chart)
 
-![Clustered Bar Chart](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113502.png)
+![Clustered Bar Chart](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/bar%20chart%20.png)
 
 #### Reporting
 The bar chart compares average Recency, Frequency, and Monetary values:
@@ -282,7 +317,7 @@ Clustered bars clearly show Cluster 3 towering in Frequency and Monetary, while 
 
 ###  Scatter Plot of Frequency vs. Monetary by Cluster
 
-![Scatter Plot](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113820.png)
+![Scatter Plot](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/clusterd.png)
 #### Reporting
 This scatter plot maps Frequency against Monetary, color-coded by cluster.
 - **Cluster 3** appears in the upper-right corner with ~5,918 purchases and ~$42,177.93 spend.
@@ -294,13 +329,12 @@ A scatter plot with distinct colored clusters. Cluster 3 is a standout point, wi
 ---
 
 ###  Maps of Country by Cluster
-
+![Map](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/map.png)
 #### Reporting
 The map displays customer distribution by country for each cluster. Given the UK focus of the dataset, most clusters likely concentrate in the UK. Cluster 3 may show a more specific regional pattern due to its smaller size.
 
 ####  View
 A map with shaded regions, predominantly focused on the UK, varying in intensity by cluster.
-![Map](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113950.png)
 
 ---
 
@@ -313,7 +347,7 @@ This chart or table lists unique products per cluster.
 
 ####  View
 A table or bar chart, with Cluster 3 potentially at the top for product count.
-![Product Table](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20114110.png)
+![Product Table](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/matrix.png)
 ---
 
 ##  Findings and Business Impact
