@@ -4,8 +4,8 @@
 This project, titled **Customer Segmentation with Snowflake and Data Science**, aims to segment customers of an online retail dataset using Recency, Frequency, and Monetary (RFM) analysis combined with K-Means clustering. The analysis leverages Snowflake for scalable data management, Python for computational tasks, and Power BI for interactive visualizations. The objective is to provide actionable insights for marketing strategies.
 
 ## Dataset
-- **Source**: Online Retail Dataset from Kaggle[](https://www.kaggle.com/datasets/carrie1/ecommerce-data)
-- **Format**: CSV file (`data.csv`)
+- **Source**: Online Retail Dataset from Kaggle[] https://www.kaggle.com/datasets/carrie1/ecommerce-data
+- **Format**: CSV file ([`data.csv`](https://github.com/Dhanushbhai1054/E--Commerce-Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/e%20commerce.zip)
 - **Features**:
   - `InvoiceNo`: Unique invoice number (string)
   - `StockCode`: Product code (string)
