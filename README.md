@@ -1,7 +1,7 @@
 # E-Commerce Customer Segmentation with Snowflake and Data Science
 
 ## Project Overview
-This project, titled **Customer Segmentation with Snowflake and Data Science**, aims to segment customers of an online retail dataset using Recency, Frequency, and Monetary (RFM) analysis combined with K-Means clustering. The analysis leverages Snowflake for scalable data management, Python for computational tasks, and Power BI for interactive visualizations. The objective is to provide actionable insights for marketing strategies, simulating a toy store context. The project was developed as of July 24, 2025.
+This project, titled **Customer Segmentation with Snowflake and Data Science**, aims to segment customers of an online retail dataset using Recency, Frequency, and Monetary (RFM) analysis combined with K-Means clustering. The analysis leverages Snowflake for scalable data management, Python for computational tasks, and Power BI for interactive visualizations. The objective is to provide actionable insights for marketing strategies.
 
 ## Dataset
 - **Source**: Online Retail Dataset from Kaggle[](https://www.kaggle.com/datasets/carrie1/ecommerce-data)
