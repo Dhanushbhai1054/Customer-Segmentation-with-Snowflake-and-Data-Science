@@ -282,6 +282,7 @@ Clustered bars clearly show Cluster 3 towering in Frequency and Monetary, while 
 
 ###  Scatter Plot of Frequency vs. Monetary by Cluster
 
+![Scatter Plot](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113820.png)
 #### Reporting
 This scatter plot maps Frequency against Monetary, color-coded by cluster.
 - **Cluster 3** appears in the upper-right corner with ~5,918 purchases and ~$42,177.93 spend.
@@ -294,7 +295,6 @@ A scatter plot with distinct colored clusters. Cluster 3 is a standout point, wi
 
 ###  Maps of Country by Cluster
 
-![Scatter Plot](https://github.com/Dhanushbhai1054/Customer-Segmentation-with-Snowflake-and-Data-Science/blob/main/Screenshot%202025-07-26%20113820.png)
 #### Reporting
 The map displays customer distribution by country for each cluster. Given the UK focus of the dataset, most clusters likely concentrate in the UK. Cluster 3 may show a more specific regional pattern due to its smaller size.
 
